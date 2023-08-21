@@ -44,6 +44,7 @@ export const register = async (req, res) => {
 }
 // Login user
 export const login = async (req, res) => {
+  
   try {
     const { username, password } = req.body
     const user = await User.findOne({ username })
@@ -80,8 +81,10 @@ export const login = async (req, res) => {
 }
 // Get me
 export const getMe = async (req, res) => {
+
   try {
     const user = await User.findById(req.userId)
+    // const user = await User.findOne(req.userId)
 
     if (!user) {
       return res.json({
